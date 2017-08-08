@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/asela/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/support-annotations-25.3.1_12308cee7289db1ee7864a8c270fc62eacc0fac8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/7ab3fcef9654cd2457faf7833b2bcf6840b4be5c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_01508c443cd1714a73751b040c9ab6ec2c599412.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/52d7b0925be9b0ed090b079bcd6dd419adbf3d18/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_76bba9fe65986796db99cafa7ea37bb923bdd0c0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/95eec87c384be960ba5e15377c6f0adcddb2f76f/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="364364bf77b4a71afc5930fc3ae57b3f0eea637c">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_687ad4d7d7d88b82ef13240ac399596338e6b15b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/92dd14e2060972a3db761ea60ec924dd18b51f39/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_876572880b6623f210b9092c6ad508bf1f031cbc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/f3f0a139f78ae10502e7787c310c0072b3214a15/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_9fb38c9625c24a8f524513f06874fa86767defc6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_a5d5e47f44c8dd7e1dda0d7608ed0e69d2cb37f5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/42564810d6e3855868dfbc7889b33a2a2437ab4e/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_3dc439c94d78a734e4631fc5692dc120f70d30bf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/5a3d184c76b6121e7e78104e71e6fae6b195f5a4/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="07e07903922250dabf50c7d131d6fa069a050305">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_83f8fa13361ab7639dccdfc480abe3de3b32f244.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/da8133f9f542ac1498dc97bb68aeba9c0959aea6/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_1107d96820ed595f6c877e6bb2734f7700062a6c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.gradle/caches/modules-2/files-2.1/org.eclipse.paho/org.eclipse.paho.client.mqttv3/1.1.0/89d827ffa47c241f2627421ef1d6c7a8c207a341/org.eclipse.paho.client.mqttv3-1.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="89d827ffa47c241f2627421ef1d6c7a8c207a341">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/org.eclipse.paho.client.mqttv3-1.1.0_ddcc48268e571641544ae7654dd857e32695bbcb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/91214cf14ddad232b0a955b275c30510400a1e36/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="2430e711762a749feb00b3d64858ca4768251b9d">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_e05d853375f07c7b5502d1b6448a257e16b4ed91.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/c87ccc9982aa8d7b5a9097bdaa7c8f23ca4f034d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="43e9789bd3240271265ab30ce1be9f224843f5a8">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_e5405cd68abd592c8e3e659209e76102412b19c6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/698c355e846e27831e814913cd29e4468ae3e6c9/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_247c1748fdd62a06dd657bad2d9313a4e3408587.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/181fc68aa1626cff5a901ed967c571a14f0ac107/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_07f0acfcaa061612fb77936596a1ac703e273642.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/53129917fd5dfcf13497fa63fce142437e91234c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f47f4d5bdfd7d7bf330945b8a7ccce4ab437a710">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_ad281d3faf8b995406e9b26125af4517b0d244d6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/50cf78d305c812bf5a371d8ced1d6bb5534b28ae/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_38204a02d2e8d92fd8d63a968e79408fe160c45a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/57c86bcab426beb2ade9decc864eb8f75ffbe4fa/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="374d595ee099a19b6c1c3718cdb4c345be7a3d45">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_4bf900550491aab4919e1748834171d2cb91344e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/84057673295de6fbdf799e15115598d6d0a6901d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ed87ccdcb70c17d71ba4e6e4ac16afa62d3c49fb">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_a737ff7c1fce2b9f4ff5d9174d58d8b33948d3d0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/8e53e81b8eb70fac7f119c1a150f85604078e22c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_37d9a4e9fbe889e73a8b0433a7a26ffe6e146ff1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/f78c17c8820ae691d1c5080d11fd21f5376db847/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_36a0e26c93ca19dfed3991b287c16161c737b0c3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/0b39ca368c88afb31ff4c34169c6159ea4d09465/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_2fce74325c922168a3c47000c35996164463006c.jar" />
+    </item>
+
+</items>
