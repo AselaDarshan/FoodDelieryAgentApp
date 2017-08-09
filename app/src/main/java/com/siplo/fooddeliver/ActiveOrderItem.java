@@ -11,10 +11,10 @@ public class ActiveOrderItem extends SugarRecord<ActiveOrderItem> {
     String qty;
     String state;
     String tableId;
-    int orderId;
+    long orderId;
     double price;
 
-    public ActiveOrderItem(String itemName, String qty, String state, String tableId, int orderId, String itemId, double price) {
+    public ActiveOrderItem(String itemName, String qty, String state, String tableId, long orderId, String itemId, double price) {
         this.itemName = itemName;
         this.qty = qty;
         this.state = state;

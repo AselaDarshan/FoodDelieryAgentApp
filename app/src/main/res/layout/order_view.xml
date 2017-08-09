@@ -82,10 +82,11 @@
 
         <Button
             style="@style/ButtonStyle"
+            android:id="@+id/delivered_button"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:layout_margin="6dp"
-            android:onClick="printBillButtonClick"
+            android:onClick="deliveredButtonClick"
             android:paddingBottom="0dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"

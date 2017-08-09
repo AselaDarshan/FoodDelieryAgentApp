@@ -30,6 +30,7 @@ public class ActiveOrder extends SugarRecord<ActiveOrder>  {
         this.itemList = new ArrayList<ActiveOrderItem>();
         this.total=0.0;
 
+
     }
     public List<ActiveOrderItem> getItemList() {
         return itemList;

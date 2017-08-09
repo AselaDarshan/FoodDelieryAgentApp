@@ -1,17 +1,22 @@
 package com.siplo.fooddeliver;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,25 +29,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import org.eclipse.paho.client.mqttv3.MqttException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 public class ActiveOrdersActivity extends AppCompatActivity {
     private RVAdapter adapter;
     private List<ActiveOrder> activeOrders;
-    private ArrayList<ActiveOrder> activeOrderList;
+    private List<ActiveOrder> activeOrderList;
 
     private Receiver receiver = new Receiver();
     private int printOrderId = -1;
 
-    protected Button printButton;
+    //protected Button deliverButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +85,7 @@ public class ActiveOrdersActivity extends AppCompatActivity {
         printOrderId = -1;
 
 
-        activeOrderMap = new HashMap<>();
+        //activeOrderList = new ArrayList<>();
         CheckUpdatesService.startActionUpdateCheck(this);
 //        try {
 //            updateOrderList(new JSONObject("{\"username\":\"Asela\",\"items\":[[\"Egg\",2,\"100.0000\"],[\"Chicken\",2,\"140.0000\"]]}"));
@@ -119,75 +121,91 @@ public class ActiveOrdersActivity extends AppCompatActivity {
     }
 
     public void retrieveOrderList() {
+        activeOrderList = ActiveOrder.findWithQuery(ActiveOrder.class,"SELECT * FROM active_order ORDER BY is_completed ASC LIMIT 25");
+        for (ActiveOrder activeOrder:activeOrderList) {
+
+            List<ActiveOrderItem> activeOrderItemList = ActiveOrderItem.findWithQuery(ActiveOrderItem.class, "SELECT * FROM active_order_item WHERE order_id="+activeOrder.getId());
+            activeOrder.setItemList(activeOrderItemList);
+            for(ActiveOrderItem activeOrderItem:activeOrderItemList)
+                activeOrder.total += activeOrderItem.price * Integer.parseInt(activeOrderItem.qty);
+        }
+
+        RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
+        rv.setHasFixedSize(true);
+
+        LinearLayoutManager llm = new LinearLayoutManager(getBaseContext());
+        rv.setLayoutManager(llm);
+        adapter = new RVAdapter(this, activeOrderList);
+        rv.setAdapter(adapter);
 //        WebServerCommunicationService.sendGetRequest(this,Constants.API_BASE_URL+Constants.API_ORDER_MENUS+"?filter[]=comment,sw,"+GlobalState.getCurrrentUserId()+".&filter[]=option_values,neq,"+Constants.ITEM_STATE_COMPLETED+"&satisfy=all",Constants.ORDERS_UPDATE_ACTION);
     }
 
-    public void printBillButtonClick(View v) {
-        if (printOrderId == -1) {
-            printButton = (Button) v;
-            v.setEnabled(false);
-            int position = (Integer) (((CardView) v.getParent().getParent()).getTag());
-            ActiveOrder order = activeOrderList.get(position);
-            JSONObject dataToSendToPrinter = new JSONObject();
-            printOrderId = position;
-            try {
-//            dataToSendToPrinter.put("TABLE",tableIdText.getText());
-                dataToSendToPrinter.put("ORDER_ID", order.getItemList().get(0).orderId);
-                dataToSendToPrinter.put("WAITER", GlobalState.getCurrentUsername());
-
-//            dataToSendToPrinter.put("WAITER",GlobalState.getCurrentUsername());
-                for (ActiveOrderItem item : order.getItemList()) {
-                    // if(item.state.equals(Constants.ITEM_STATE_PREPARED)) {
-                    JSONObject menuItem = new JSONObject();
-                    menuItem.put(Constants.ITEM_QTY_KEY, item.qty);
-                    menuItem.put(Constants.ITEM_NAME_KEY, item.itemName);
-                    menuItem.put(Constants.ITEM_PRICE_KEY, item.price);
-                    menuItem.put(Constants.ITEM_ID_KEY, item.itemId);
-                    dataToSendToPrinter.put(item.itemName, menuItem);
-//                    }
-//                    else{
-//                        Toast toast = Toast.makeText(getApplicationContext(), "Can't print the bill until all item has been prepared", Toast.LENGTH_SHORT);
-//                        toast.show();
-//                        printOrderId = -1;
-//                        printButton.setEnabled(true);
-//                        return;
-//                    }
-
-                }
-//                MQTTClient mqttClient = new MQTTClient();
-//                Log.d("avtive_order", "sending to printer");
-//                mqttClient.initializeMQTTClient(this.getBaseContext(), "tcp://iot.eclipse.org:1883", "app:waiter:printer" + GlobalState.getCurrentUsername(), false, false, null, null);
-//                mqttClient.publish("print_bill", 2, dataToSendToPrinter.toString().getBytes());
-            } catch (JSONException e) {
-                printOrderId = -1;
-                printButton.setEnabled(true);
-                e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-
-//            } catch (MqttException e) {
+//    public void printBillButtonClick(View v) {
+//        if (printOrderId == -1) {
+//            deliverButton = (Button) v;
+//            v.setEnabled(false);
+//            int position = (Integer) (((CardView) v.getParent().getParent()).getTag());
+//            ActiveOrder order = activeOrderList.get(position);
+//            JSONObject dataToSendToPrinter = new JSONObject();
+//            printOrderId = position;
+//            try {
+////            dataToSendToPrinter.put("TABLE",tableIdText.getText());
+//                dataToSendToPrinter.put("ORDER_ID", order.getItemList().get(0).orderId);
+//                dataToSendToPrinter.put("WAITER", GlobalState.getCurrentUsername());
+//
+////            dataToSendToPrinter.put("WAITER",GlobalState.getCurrentUsername());
+//                for (ActiveOrderItem item : order.getItemList()) {
+//                    // if(item.state.equals(Constants.ITEM_STATE_PREPARED)) {
+//                    JSONObject menuItem = new JSONObject();
+//                    menuItem.put(Constants.ITEM_QTY_KEY, item.qty);
+//                    menuItem.put(Constants.ITEM_NAME_KEY, item.itemName);
+//                    menuItem.put(Constants.ITEM_PRICE_KEY, item.price);
+//                    menuItem.put(Constants.ITEM_ID_KEY, item.itemId);
+//                    dataToSendToPrinter.put(item.itemName, menuItem);
+////                    }
+////                    else{
+////                        Toast toast = Toast.makeText(getApplicationContext(), "Can't print the bill until all item has been prepared", Toast.LENGTH_SHORT);
+////                        toast.show();
+////                        printOrderId = -1;
+////                        deliverButton.setEnabled(true);
+////                        return;
+////                    }
+//
+//                }
+////                MQTTClient mqttClient = new MQTTClient();
+////                Log.d("avtive_order", "sending to printer");
+////                mqttClient.initializeMQTTClient(this.getBaseContext(), "tcp://iot.eclipse.org:1883", "app:waiter:printer" + GlobalState.getCurrentUsername(), false, false, null, null);
+////                mqttClient.publish("print_bill", 2, dataToSendToPrinter.toString().getBytes());
+//            } catch (JSONException e) {
 //                printOrderId = -1;
-//                printButton.setEnabled(true);
-//                Toast.makeText(getApplicationContext(), "Can't print the bill due to connection error", Toast.LENGTH_SHORT).show();
+//                deliverButton.setEnabled(true);
 //                e.printStackTrace();
-            } catch (Throwable throwable) {
-                printOrderId = -1;
-                printButton.setEnabled(true);
-                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-
-                throwable.printStackTrace();
-            }
-
-//        activeOrderList.remove(position);
-//        adapter.notifyDataSetChanged();
-//        adapter.notifyItemRemoved(position);
-            Log.d("Active_orders", "print bill clicked:" + position);
-//        activeOrderList.get(0).itemList.get(0).state="testt";
-        } else {
-            Toast toast = Toast.makeText(getApplicationContext(), "Can't print the bill now! Bill print is in process", Toast.LENGTH_SHORT);
-            toast.show();
-        }
-
-    }
+//                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+//
+////            } catch (MqttException e) {
+////                printOrderId = -1;
+////                deliverButton.setEnabled(true);
+////                Toast.makeText(getApplicationContext(), "Can't print the bill due to connection error", Toast.LENGTH_SHORT).show();
+////                e.printStackTrace();
+//            } catch (Throwable throwable) {
+//                printOrderId = -1;
+//                deliverButton.setEnabled(true);
+//                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+//
+//                throwable.printStackTrace();
+//            }
+//
+////        activeOrderList.remove(position);
+////        adapter.notifyDataSetChanged();
+////        adapter.notifyItemRemoved(position);
+//            Log.d("Active_orders", "print bill clicked:" + position);
+////        activeOrderList.get(0).itemList.get(0).state="testt";
+//        } else {
+//            Toast toast = Toast.makeText(getApplicationContext(), "Can't print the bill now! Bill print is in process", Toast.LENGTH_SHORT);
+//            toast.show();
+//        }
+//
+//    }
 
     protected void printSuccess() {
         ActiveOrder order = activeOrderList.get(printOrderId);
@@ -220,7 +238,7 @@ public class ActiveOrdersActivity extends AppCompatActivity {
 
     }
 
-    HashMap<String, ActiveOrder> activeOrderMap;
+   // HashMap<String, ActiveOrder> activeOrderMap;
 
     String location;
     String phoneNo;
@@ -230,38 +248,42 @@ public class ActiveOrdersActivity extends AppCompatActivity {
         try {
             orderArray = ordersObject.getJSONArray(Constants.RECORDS_KEY);
             List<MenuItem> items = new ArrayList<>();
+            String username = ordersObject.getString(Constants.USERNAME_KEY);
+            location = ordersObject.getString("location");
+            phoneNo = ordersObject.getString("phoneNo");
 
+            ActiveOrder activeOrder = new ActiveOrder(username);
+
+          //  activeOrder.itemList.add(activeOrderItem);
+          //  activeOrder.total+=item.getInt(1)*item.getDouble(2);
+         //   activeOrderMap.put(username, activeOrder);
+
+//            SugarRecord.
+//            ActiveOrdersaveInTx(activeOrder);
+            activeOrder.save();
+            long orderId = activeOrder.getId();
             for (int i = 0; i < orderArray.length(); i++) {
                 JSONArray item = orderArray.getJSONArray(i);
                 String itemData = "12345";
-                String username = ordersObject.getString(Constants.USERNAME_KEY);
-                location = ordersObject.getString("location");
-                phoneNo = ordersObject.getString("phoneNo");
-                ActiveOrderItem activeOrderItem = new ActiveOrderItem(item.getString(0), String.valueOf(item.getInt(1)), null, username, 0, itemData, item.getDouble(2));
 
-                if (activeOrderMap.containsKey(username)) {
+                ActiveOrderItem activeOrderItem = new ActiveOrderItem(item.getString(0), String.valueOf(item.getInt(1)), null, username, orderId, itemData, item.getDouble(2));
 
-                    activeOrderMap.get(username).itemList.add(activeOrderItem);
-                    activeOrderMap.get(username).total+=item.getInt(1)*item.getDouble(2);
+              //  activeOrderItem.save();
 
-                } else {
-                    ActiveOrder activeOrder = new ActiveOrder(username);
 
-                    activeOrder.itemList.add(activeOrderItem);
-                    activeOrder.total+=item.getInt(1)*item.getDouble(2);
-                    activeOrderMap.put(username, activeOrder);
-
-                }
+                activeOrder.itemList.add(activeOrderItem);
+                activeOrder.total+=item.getInt(1)*item.getDouble(2);
 
             }
-            Set<String> keys = activeOrderMap.keySet();
-            activeOrderList = new ArrayList<>();
-            for (String key : keys) {
+            ActiveOrder.saveInTx(activeOrder.getItemList());
+          //  Set<String> keys = activeOrderMap.keySet();
+          //  activeOrderList = new ArrayList<>();
+           // for (String key : keys) {
 
 
-                activeOrderList.add(activeOrderMap.get(key));
-                Log.d("active_order_activity", activeOrderMap.get(key).tableId);
-            }
+            activeOrderList.add(0,activeOrder);
+             //   Log.d("active_order_activity", activeOrderMap.get(key).tableId);
+            //}
             //show in list
             RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
             rv.setHasFixedSize(true);
@@ -275,6 +297,13 @@ public class ActiveOrdersActivity extends AppCompatActivity {
         }
 
 
+    }
+    public void deliveredButtonClick(View v){
+        Button deliverButton = (Button)v;
+        deliverButton.setText("Completed");
+        deliverButton.setBackgroundColor(Color.argb(255,50,150,50));
+
+        ActiveOrder.executeQuery("UPDATE ACTIVE_ORDER SET is_completed=1 WHERE id="+deliverButton.getTag());
     }
     public void locationButtonClick(View v){
         // Create a Uri from an intent string. Use the result to create an Intent.
@@ -328,7 +357,39 @@ public class ActiveOrdersActivity extends AppCompatActivity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                  //  if(topic.contains(Constants.NEW_ORDER_TOPIC)) {
+                    NotificationCompat.Builder mBuilder =
+                            new NotificationCompat.Builder(getBaseContext())
+                                    .setSmallIcon(R.mipmap.ic_launcher)
+                                    .setContentTitle("New Order")
+                                    .setContentText("Click here to view the order ");
+// Creates an explicit intent for an Activity in your app
+                    Intent resultIntent = new Intent(getBaseContext(),ActiveOrdersActivity.class);
+
+
+// The stack builder object will contain an artificial back stack for the
+// started Activity.
+// This ensures that navigating backward from the Activity leads out of
+// your application to the Home screen.
+                    TaskStackBuilder stackBuilder = TaskStackBuilder.create(getBaseContext());
+// Adds the back stack for the Intent (but not the Intent itself)
+                    stackBuilder.addParentStack(ActiveOrdersActivity.class);
+// Adds the Intent that starts the Activity to the top of the stack
+                    stackBuilder.addNextIntent(resultIntent);
+                    PendingIntent resultPendingIntent =
+                            stackBuilder.getPendingIntent(
+                                    0,
+                                    PendingIntent.FLAG_UPDATE_CURRENT
+                            );
+                    mBuilder.setContentIntent(resultPendingIntent);
+                    NotificationManager mNotificationManager =
+                            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+// mNotificationId is a unique integer your app uses to identify the
+// notification. For example, to cancel the notification, you can pass its ID
+// number to NotificationManager.cancel().
+                    mNotificationManager.notify(0, mBuilder.build());
+
+                    //  if(topic.contains(Constants.NEW_ORDER_TOPIC)) {
                         try {
                             updateOrderList(new JSONObject(response.split("~")[1].split("`")[0]));
                         } catch (JSONException e) {
@@ -389,12 +450,12 @@ public class ActiveOrdersActivity extends AppCompatActivity {
                 }
                 else if(response != null && response.equals(Constants.MQTT_PUBLISH_FAILED)){
                     Log.d("mqtt", "Received to activeOrderActivity: error ");
-                    printButton.setEnabled(true);
+            //        deliverButton.setEnabled(true);
                     Toast toast = Toast.makeText(getApplicationContext(), "Can't print the bill due to connection error!", Toast.LENGTH_SHORT);
                     toast.show();
                 }
                 else {
-                    printButton.setEnabled(true);
+             ///       deliverButton.setEnabled(true);
                     Log.d("mqtt", "Received to activeOrderActivity: error ");
                     Toast toast = Toast.makeText(getApplicationContext(), "Communication Error!", Toast.LENGTH_SHORT);
                     toast.show();

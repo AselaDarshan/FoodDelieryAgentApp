@@ -2,12 +2,14 @@ package com.siplo.fooddeliver;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -42,6 +44,13 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder>{
 
         holder.cv.setTag(position);
 
+        if(orders.get(position).isCompleted){
+            holder.button.setText("Completed");
+            holder.button.setBackgroundColor(Color.argb(255,50,150,50));
+
+        }
+        holder.button.setTag(orders.get(position).getId());
+
 
 //        personViewHolder.personAge.setText(persons.get(i).age);
 //        personViewHolder.personPhoto.setImageResource(persons.get(i).photoId);
@@ -66,6 +75,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder>{
         CardView cv;
         TextView table;
         TextView total;
+        Button button;
         private HorizontalRVAdapter horizontalAdapter;
 //        TextView personAge;
 //        ImageView personPhoto;
@@ -81,6 +91,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder>{
             cv = (CardView)itemView.findViewById(R.id.cv);
             table = (TextView)itemView.findViewById(R.id.table_text);
             total = (TextView)itemView.findViewById(R.id.total_text);
+            button = (Button) itemView.findViewById(R.id.delivered_button);
 
 
             horizontalList = (RecyclerView) itemView.findViewById(R.id.horizontal_list);

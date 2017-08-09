@@ -12,13 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         tools:replace="android:icon"
+        android:name="com.orm.SugarApp"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="DATABASE"
             android:value="food_deliver.db" />
         <meta-data
             android:name="VERSION"
-            android:value="2" />
+            android:value="5" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />
