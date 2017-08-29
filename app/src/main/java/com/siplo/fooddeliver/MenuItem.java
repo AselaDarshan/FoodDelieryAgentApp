@@ -5,7 +5,7 @@ import com.orm.SugarRecord;
 /**
  * Created by asela on 5/17/17.
  */
-public class MenuItem extends SugarRecord<MenuItem> {
+public class MenuItem extends SugarRecord {
 
 
     int menuId;

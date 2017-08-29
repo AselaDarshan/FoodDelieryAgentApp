@@ -5,7 +5,7 @@ import com.orm.SugarRecord;
 /**
  * Created by asela on 6/15/17.
  */
-public class ActiveOrderItem extends SugarRecord<ActiveOrderItem> {
+public class ActiveOrderItem extends SugarRecord {
     String itemName;
     String itemId;
     String qty;

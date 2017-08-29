@@ -75,15 +75,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/asela/.android/build-cache/5a3d184c76b6121e7e78104e71e6fae6b195f5a4/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="07e07903922250dabf50c7d131d6fa069a050305">
-        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_83f8fa13361ab7639dccdfc480abe3de3b32f244.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/home/asela/.android/build-cache/da8133f9f542ac1498dc97bb68aeba9c0959aea6/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -153,6 +144,15 @@
         revision="25.0.3"
         sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
         <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_38204a02d2e8d92fd8d63a968e79408fe160c45a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/asela/.android/build-cache/06fd20d54dc645990d56790262b8662bb5028171/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="19a40a8afe0289f6520b25353096ac233e78f69d">
+        <dex dex="/home/asela/AndroidStudioProjects/FoodDeliver/app/build/intermediates/pre-dexed/debug/classes_cf26de973ef328188aa1445e5c43abb216aef45c.jar" />
     </item>
     <item
         is-multidex="false"

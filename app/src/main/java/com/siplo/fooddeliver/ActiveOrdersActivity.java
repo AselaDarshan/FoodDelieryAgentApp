@@ -29,6 +29,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.orm.SugarDb;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,7 +53,7 @@ public class ActiveOrdersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_active_orders);
         getSupportActionBar().setTitle(Html.fromHtml("<font color=#8B0000>Active Orders</font>"));
-
+        new SugarDb(this).getDB().close();
 
 //        activeOrders = ActiveOrder.findWithQuery(ActiveOrder.class, "SELECT * from ACTIVE_ORDER where IS_COMPLETED=0");
 //        activeOrderList = new ArrayList<>();

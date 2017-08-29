@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by asela on 6/15/17.
  */
-public class ActiveOrder extends SugarRecord<ActiveOrder>  {
+public class ActiveOrder extends SugarRecord  {
     String tableId;
 
 
