@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "com.siplo.fooddeliver"
-        minSdkVersion 19
+        minSdkVersion 10
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -29,8 +29,8 @@ dependencies {
     compile 'com.github.satyan:sugar:1.5'
     compile 'com.android.support:cardview-v7:25.3.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
-    compile 'com.google.firebase:firebase-messaging:11.0.4'
-    compile 'com.firebase:firebase-jobdispatcher:0.6.0'
+//    compile 'com.google.firebase:firebase-messaging:11.0.4'
+//    compile 'com.firebase:firebase-jobdispatcher:0.6.0'
     compile 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0'
     testCompile 'junit:junit:4.12'
 }

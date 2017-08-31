@@ -83,7 +83,7 @@ public class CheckUpdatesService extends IntentService {
             Log.d("checkupdateservice","subscribing");
             mqttClient = new MQTTClient();
 
-            mqttClient.initializeMQTTClient(this.getBaseContext(), "food_deliver_agent:subscribe", false, false, null, null);
+            mqttClient.initializeMQTTClient(this.getBaseContext(), "food_deliver_agent:subscribe:1", false, false, null, null);
             mqttClient.subscribe(Constants.NEW_ORDER_TOPIC+GlobalState.getCurrentUsername(),"test_food_delivery_agent_app",2);
 
             mqttClient.disconnect();

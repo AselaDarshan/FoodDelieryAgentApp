@@ -8,7 +8,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.firebase.messaging.FirebaseMessaging;
+//import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 // [START subscribe_topics]
-                FirebaseMessaging.getInstance().subscribeToTopic("news");
+//                FirebaseMessaging.getInstance().subscribeToTopic("news");
                 // [END subscribe_topics]
 
                 // Log and toast
