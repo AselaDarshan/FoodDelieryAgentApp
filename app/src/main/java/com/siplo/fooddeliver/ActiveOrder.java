@@ -17,6 +17,8 @@ public class ActiveOrder extends SugarRecord  {
 
 
     Double total;
+    String phoneNumber;
+    String location;
 
     boolean isCompleted;
     @Ignore
@@ -24,8 +26,10 @@ public class ActiveOrder extends SugarRecord  {
 
 
     public ActiveOrder(){}
-    public ActiveOrder(String tableId) {
+    public ActiveOrder(String tableId,String phoneNumber,String location) {
         this.tableId = tableId;
+        this.phoneNumber = phoneNumber;
+        this.location = location;
         this.isCompleted = false;
         this.itemList = new ArrayList<ActiveOrderItem>();
         this.total=0.0;

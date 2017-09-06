@@ -34,6 +34,7 @@
                 android:layout_height="30dp"
                 android:layout_margin="5dp"
                 android:onClick="locationButtonClick"
+                android:id="@+id/location_button"
                 android:paddingBottom="0dp"
                 android:paddingLeft="2dp"
                 android:paddingRight="2dp"
@@ -42,6 +43,7 @@
                 android:textSize="12sp" />
             <Button
                 style="@style/SmallButtonStyle"
+                android:id="@+id/call_button"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:layout_margin="5dp"

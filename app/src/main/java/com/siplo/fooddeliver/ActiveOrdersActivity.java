@@ -253,8 +253,8 @@ public class ActiveOrdersActivity extends AppCompatActivity {
             String username = ordersObject.getString(Constants.USERNAME_KEY);
             location = ordersObject.getString("location");
             phoneNo = ordersObject.getString("phoneNo");
-
-            ActiveOrder activeOrder = new ActiveOrder(username);
+            Log.d("activeOrderActivity","updating: p:"+phoneNo+" l:"+location+" u:"+username);
+            ActiveOrder activeOrder = new ActiveOrder(username,phoneNo,location);
 
           //  activeOrder.itemList.add(activeOrderItem);
           //  activeOrder.total+=item.getInt(1)*item.getDouble(2);
@@ -309,7 +309,7 @@ public class ActiveOrdersActivity extends AppCompatActivity {
     }
     public void locationButtonClick(View v){
         // Create a Uri from an intent string. Use the result to create an Intent.
-        Uri gmmIntentUri = Uri.parse("google.navigation:q="+location);
+        Uri gmmIntentUri = Uri.parse("google.navigation:q="+v.getTag());
 
 // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
@@ -322,8 +322,8 @@ public class ActiveOrdersActivity extends AppCompatActivity {
     }
     public void callButtonClick(View v) {
         Intent intent = new Intent(Intent.ACTION_CALL);
-
-        intent.setData(Uri.parse("tel:"+phoneNo));
+        Log.d("activeOrderActivity","calling: "+v.getTag());
+        intent.setData(Uri.parse("tel:"+v.getTag()));
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions

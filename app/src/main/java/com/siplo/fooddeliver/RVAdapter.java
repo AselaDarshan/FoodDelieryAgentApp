@@ -50,6 +50,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder>{
 
         }
         holder.button.setTag(orders.get(position).getId());
+        holder.callButton.setTag(orders.get(position).phoneNumber);
+        holder.locationButton.setTag(orders.get(position).location);
 
 
 //        personViewHolder.personAge.setText(persons.get(i).age);
@@ -76,6 +78,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder>{
         TextView table;
         TextView total;
         Button button;
+        Button callButton;
+        Button locationButton;
         private HorizontalRVAdapter horizontalAdapter;
 //        TextView personAge;
 //        ImageView personPhoto;
@@ -92,8 +96,9 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder>{
             table = (TextView)itemView.findViewById(R.id.table_text);
             total = (TextView)itemView.findViewById(R.id.total_text);
             button = (Button) itemView.findViewById(R.id.delivered_button);
+            callButton = (Button) itemView.findViewById(R.id.call_button);
 
-
+            locationButton = (Button) itemView.findViewById(R.id.location_button);
             horizontalList = (RecyclerView) itemView.findViewById(R.id.horizontal_list);
             horizontalList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
             horizontalAdapter = new HorizontalRVAdapter();
